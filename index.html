@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ReviewBlog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: #f6f3ef;
+        color: #1f1f1f;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0 32px;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: -0.02em;
+      }
+
+      nav {
+        display: flex;
+        gap: 18px;
+        font-size: 0.95rem;
+      }
+
+      nav a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 24px;
+        align-items: center;
+        padding: 28px;
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: 0 12px 30px rgba(31, 31, 31, 0.08);
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+
+      .hero p {
+        color: #4a4a4a;
+        font-size: 1.02rem;
+        margin-bottom: 18px;
+      }
+
+      .hero button {
+        border: none;
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: #1f1f1f;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .hero-card {
+        background: #f6f3ef;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .hero-card h3 {
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+
+      .hero-card ul {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+
+      .hero-card li {
+        font-size: 0.95rem;
+        color: #3a3a3a;
+      }
+
+      .content {
+        margin-top: 36px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 32px;
+      }
+
+      .posts {
+        display: grid;
+        gap: 20px;
+      }
+
+      .post-card {
+        background: #ffffff;
+        padding: 20px 22px;
+        border-radius: 18px;
+        box-shadow: 0 6px 20px rgba(31, 31, 31, 0.06);
+        display: grid;
+        gap: 10px;
+      }
+
+      .post-meta {
+        display: flex;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: #7a7a7a;
+      }
+
+      .post-card h2 {
+        font-size: 1.4rem;
+      }
+
+      .post-card p {
+        color: #444;
+        line-height: 1.6;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #f6f3ef;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .sidebar {
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .panel {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 18px 20px;
+        box-shadow: 0 6px 20px rgba(31, 31, 31, 0.06);
+        display: grid;
+        gap: 10px;
+      }
+
+      .panel h3 {
+        font-size: 1rem;
+      }
+
+      .panel ul {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+        color: #444;
+        font-size: 0.92rem;
+      }
+
+      footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #6a6a6a;
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script type="text/babel">
+      const posts = [
+        {
+          title: "The Art of the Five-Star Review",
+          excerpt:
+            "Learn how thoughtful reviews can help readers decide and encourage creators to keep building.",
+          date: "Sep 14, 2024",
+          read: "6 min read",
+          tag: "Reviews",
+        },
+        {
+          title: "Behind the Scenes: Building a Cozy Reading Space",
+          excerpt:
+            "A quick tour of what makes a blog feel welcoming, from typography to gentle color palettes.",
+          date: "Sep 10, 2024",
+          read: "4 min read",
+          tag: "Design",
+        },
+        {
+          title: "Monthly Picks: Books Worth the Hype",
+          excerpt:
+            "Our editors share the most delightful stories we discovered this month.",
+          date: "Sep 2, 2024",
+          read: "5 min read",
+          tag: "Roundup",
+        },
+      ];
+
+      const App = () => (
+        <div className="page">
+          <header>
+            <div className="logo">ReviewBlog</div>
+            <nav>
+              <a href="#">Home</a>
+              <a href="#">Reviews</a>
+              <a href="#">Interviews</a>
+              <a href="#">About</a>
+              <a href="#">Subscribe</a>
+            </nav>
+          </header>
+
+          <section className="hero">
+            <div>
+              <h1>Your daily dose of thoughtful reviews.</h1>
+              <p>
+                Discover stories, interviews, and curated picks from creators who
+                love sharing their honest takes.
+              </p>
+              <button type="button">Start reading</button>
+            </div>
+            <div className="hero-card">
+              <h3>Today on the blog</h3>
+              <ul>
+                <li>✨ New: Review roundup for indie authors</li>
+                <li>🎧 Podcast: Talking books &amp; branding</li>
+                <li>📚 Guide: Build your review cadence</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="content">
+            <div className="posts">
+              {posts.map((post) => (
+                <article key={post.title} className="post-card">
+                  <div className="post-meta">
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <span>{post.read}</span>
+                  </div>
+                  <h2>{post.title}</h2>
+                  <p>{post.excerpt}</p>
+                  <div className="tag">#{post.tag}</div>
+                </article>
+              ))}
+            </div>
+            <aside className="sidebar">
+              <div className="panel">
+                <h3>Trending topics</h3>
+                <ul>
+                  <li>Cozy mysteries</li>
+                  <li>Design diaries</li>
+                  <li>Creator interviews</li>
+                  <li>Monthly favorites</li>
+                </ul>
+              </div>
+              <div className="panel">
+                <h3>Newsletter</h3>
+                <p>Get our best reviews every Friday.</p>
+                <button type="button">Join the list</button>
+              </div>
+              <div className="panel">
+                <h3>Community stats</h3>
+                <ul>
+                  <li>12k weekly readers</li>
+                  <li>85 curated reviews</li>
+                  <li>38 featured creators</li>
+                </ul>
+              </div>
+            </aside>
+          </section>
+
+          <footer>© 2024 ReviewBlog · Crafted for curious readers.</footer>
+        </div>
+      );
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
