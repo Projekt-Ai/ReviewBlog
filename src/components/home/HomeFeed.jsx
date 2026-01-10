@@ -2,14 +2,12 @@ import { useMemo } from "react";
 import ArticleCardSkeleton from "./ArticleCardSkeleton";
 
 export default function HomeFeed() {
-  const items = useMemo(
-    () => Array.from({ length: 6 }, (_, i) => ({ id: i })),
-    []
-  );
+  // Mock data SHAPE only (ids), strictly for layout scaffolding
+  const items = useMemo(() => Array.from({ length: 6 }, (_, i) => ({ id: i })), []);
 
   return (
-    <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {items.map(item => (
+    <section className="rb-grid" aria-label="Home feed placeholders">
+      {items.map((item) => (
         <ArticleCardSkeleton key={item.id} />
       ))}
     </section>
