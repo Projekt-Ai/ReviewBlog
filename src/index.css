@@ -1,9 +1,89 @@
-/* Global styles */
-* {
-  box-sizing: border-box;
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #1f1f1f;
+  background: #f6f3ef;
 }
 
-body {
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.rb-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.rb-hero {
+  border-radius: 16px;
+  background: #111;
+  color: #fff;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.rb-hero h1 {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.rb-hero p {
+  margin: 10px 0 0;
+  color: #cfcfcf;
+  max-width: 720px;
+}
+
+.rb-featured {
+  height: 160px;
+  border-radius: 16px;
+  background: #e6e2db;
+  margin-bottom: 20px;
+}
+
+.rb-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .rb-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .rb-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.rb-card {
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 14px;
+}
+
+.rb-skel-img {
+  height: 160px;
+  border-radius: 12px;
+  background: #e6e2db;
+  margin-bottom: 12px;
+}
+
+.rb-skel-line {
+  height: 14px;
+  border-radius: 999px;
+  background: #e6e2db;
+  margin-bottom: 10px;
+}
+
+.rb-skel-line.short {
+  width: 55%;
+}
+
+.rb-skel-line.long {
+  width: 80%;
 }
